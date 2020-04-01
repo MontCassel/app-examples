@@ -1,7 +1,6 @@
 const ROW_HEIGHT = 30;
 const ROW_MARGIN = 10;
-const SPREADSHEET_URL =
-  "https://docs.google.com/spreadsheets/d/17TC6VsTfySYd3Ad8S28POkurG0OqOCnZzcKiFQ6lj50/edit?usp=sharing";
+const SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/17TC6VsTfySYd3Ad8S28POkurG0OqOCnZzcKiFQ6lj50/edit?usp=sharing";
 
 miro.onReady(function() {
   miro.initialize({
