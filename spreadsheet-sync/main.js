@@ -52,7 +52,7 @@ async function syncWithSheet() {
           textAlign: "r",
           fontSize: 12
         },
-        text: role,
+        title: role,
         metadata: {
           [appId]: {
             role
