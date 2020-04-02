@@ -43,7 +43,7 @@ async function syncWithSheet() {
       const x = viewport.x + viewport.width / 2 - (maxWidth - width) / 2;
       const y = viewport.y + ROW_HEIGHT / 2 + (ROW_HEIGHT + ROW_MARGIN) * i;
       miro.board.widgets.create({
-        type: "frame",
+        type: "shape",
         text: `${rate}%`,
         width,
         height: ROW_HEIGHT,
