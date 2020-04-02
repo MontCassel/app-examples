@@ -27,6 +27,8 @@ async function syncWithSheet() {
 
   items.forEach(async ({ role }, i) => {
 
+    alert(role);
+
 
     const shapes = (
       await miro.board.widgets.get({
