@@ -36,8 +36,8 @@ async function syncWithSheet() {
     ).filter(shape => !!shape.metadata[appId]);
 
     const frame = frames.find(shape => shape.metadata[appId].title === ItemName);
-    const seedframe = frames.find(shape => shape.metadata[appId].title === "SEED");
-    const SeedColor = seedframe.backgroundColor
+    //const seedframe = frames.find(shape => shape.metadata[appId].title === "SEED");
+    //const SeedColor = seedframe.backgroundColor
     
 
     if (frame) {
@@ -56,7 +56,7 @@ async function syncWithSheet() {
           textAlign: "r",
           fontSize: 12,
           borderWidth: 0,
-          
+
           //backgroundColor: SeedColor,
         },
         title: ItemName,
