@@ -25,7 +25,7 @@ async function syncWithSheet() {
   const viewport = await miro.board.viewport.get();
   const maxWidth = 300;
 
-  items.forEach(async ({ role }, i) => {
+  items.forEach(async ({ ItemName }, i) => {
 
     //alert(role);
 
@@ -35,11 +35,11 @@ async function syncWithSheet() {
       })
     ).filter(shape => !!shape.metadata[appId]);
 
-    const frame = frames.find(shape => shape.metadata[appId].role === role);
-    const width = 100;
+    const frame = frames.find(shape => shape.metadata[appId].title === ItemName);
+    
 
     if (frame) {
-      alert(role);
+      alert(ItemName);
       
     } else {
       const y = viewport.y + ROW_HEIGHT / 2 + (ROW_HEIGHT + ROW_MARGIN) * i;
@@ -56,12 +56,8 @@ async function syncWithSheet() {
           borderWidth: 0,
           backgroundColor: "#4262ff",
         },
-        title: role,
-        metadata: {
-          [appId]: {
-            role
-          }
-        }
+        title: ItemName,
+
       });
     }
   });
