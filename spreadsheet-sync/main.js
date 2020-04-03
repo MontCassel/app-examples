@@ -3,8 +3,8 @@ const ROW_MARGIN = 10;
 const SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/17TC6VsTfySYd3Ad8S28POkurG0OqOCnZzcKiFQ6lj50/edit?usp=sharing";
 //const SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/121-56BwZe8Cws0A8xE_cSGXc64YD_bBPfQM8o2YVnaM/edit?usp=sharing";
 const SEEDTITLE = "SEED"
-const currentGroup = ""
-const r = 0
+var currentGroup = ""
+var r = 0
 
 miro.onReady(function() {
   miro.initialize({
@@ -57,7 +57,7 @@ async function syncWithSheet() {
     } else {
 
       if (currentGroup != Group) {
-        r = 1
+        var r = 1
       }
       
   
@@ -77,7 +77,7 @@ async function syncWithSheet() {
 
       });
     }
-    r=r+1
-    currentGroup = Group
+    var r=r+1
+    var currentGroup = Group
   });
 }
