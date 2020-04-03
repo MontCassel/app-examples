@@ -56,7 +56,7 @@ async function syncWithSheet() {
     } else {
 
       if (currentGroup != Group) {
-        var r = 1
+        r = 1
       }
       
       alert(r);
@@ -77,7 +77,7 @@ async function syncWithSheet() {
 
       });
     }
-    var r=r+1
-    var currentGroup = Group
+    r=r+1
+    currentGroup = Group
   });
 }
