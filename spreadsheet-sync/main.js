@@ -27,32 +27,34 @@ async function syncWithSheet() {
 
   items.forEach(async ({ role }, i) => {
 
-    alert(role);
+    //alert(role);
 
-
-    const shapes = (
+    const frames = (
       await miro.board.widgets.get({
         type: "frame"
       })
     ).filter(shape => !!shape.metadata[appId]);
-    const shape = shapes.find(shape => shape.metadata[appId].role === role);
+
+    const frame = frames.find(shape => shape.metadata[appId].role === role);
     const width = 100;
 
-    if (shape) {
-      const x = shape.x - (shape.width - width) / 2;
+    if (frame) {
+      alert(role);
       
     } else {
-      const x = viewport.x + viewport.width / 2 - (maxWidth - width) / 2;
       const y = viewport.y + ROW_HEIGHT / 2 + (ROW_HEIGHT + ROW_MARGIN) * i;
   
       miro.board.widgets.create({
         type: "frame",
         x: viewport.x + viewport.width / 2 - maxWidth - 110,
         y,
-        width: 400,
+        width: 100,
+        height: 10,
         style: {
           textAlign: "r",
-          fontSize: 12
+          fontSize: 12,
+          borderWidth: 0,
+          backgroundColor: "#4262ff",
         },
         title: role,
         metadata: {
