@@ -23,19 +23,20 @@ async function syncWithSheet() {
     key: SPREADSHEET_URL,
     simpleSheet: true
   });
+
   const viewport = await miro.board.viewport.get();
   const maxWidth = 300;
 
+  let frames = await miro.board.widgets.get({type: "frame"});
+  const seedframe = frames.find(seedframe => seedframe.title === SEEDTITLE);
+  const SeedColor = seedframe.backgroundColor
+  if (seedframe) {
+  alert(SeedColor)
+  }
+
   items.forEach(async ({ ItemName }, i) => {
 
-    let frames = await miro.board.widgets.get({type: "frame"});
-
     const frame = frames.find(frame => frame.title === ItemName);
-    const seedframe = frames.find(seedframe => seedframe.title === SEEDTITLE);
-    const SeedColor = seedframe.backgroundColor
-    if (seedframe) {
-    alert("yo bro")
-    }
 
     if (frame) {
       alert("deja la");
