@@ -27,7 +27,7 @@ async function syncWithSheet() {
 
   items.forEach(async ({ ItemName }, i) => {
 
-    //alert(role);
+    alert(ItemName);
 
     const frames = (
       await miro.board.widgets.get({
@@ -41,7 +41,7 @@ async function syncWithSheet() {
     
 
     if (frame) {
-      alert(ItemName);
+      //alert(ItemName);
       
     } else {
       const y = viewport.y + ROW_HEIGHT / 2 + (ROW_HEIGHT + ROW_MARGIN) * i;
