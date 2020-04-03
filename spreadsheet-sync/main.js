@@ -34,7 +34,7 @@ async function syncWithSheet() {
       })
     ).filter(shape => !!shape.metadata[appId]);
 
-    const frame = frames.find(shape => shape.metadata[appId].title === ItemName);
+    const frame = frames.find(shape => shape.title === ItemName);
     //const seedframe = frames.find(shape => shape.metadata[appId].title === SEEDTITLE);
     //const SeedColor = seedframe.backgroundColor
     //if (seedframe) {
