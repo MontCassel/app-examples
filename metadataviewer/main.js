@@ -14,6 +14,9 @@ miro.onReady(function() {
 });
 
 async function checkShapeMetadata() {
+
+  Alert ("test");
+
   const appId = await miro.getClientId();
   // Get selected widgets
   let widgets = await miro.board.selection.get()
