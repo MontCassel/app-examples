@@ -21,14 +21,11 @@ miro.onReady(function() {
 });
 
 async function syncWithSheet() {
-  const appId = await miro.getClientId();
   const items = await Tabletop.init({
     key: SPREADSHEET_URL,
     simpleSheet: true
   });
 
-  const viewport = await miro.board.viewport.get();
-  const maxWidth = 300;
 
   let frames = await miro.board.widgets.get({type: "frame"});
   const seedframe = frames.find(seedframe => seedframe.title === SEEDTITLE);
@@ -39,8 +36,6 @@ async function syncWithSheet() {
   const SeedHeight = seedframe.height
 
   items.forEach(async ({ Group, ItemName }, i) => {
-
-    
 
     const frame = frames.find(frame => frame.title === ItemName);
     const Groupframe = frames.find(Groupframe => Groupframe.title === Group);
