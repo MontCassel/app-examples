@@ -24,6 +24,6 @@ async function checkShapeMetadata() {
 
 
   // Get widget metadata name 
-  Alert (SelectedWidget.metadata[appId].role)
+  Alert (SelectedWidget.title)
 
 }
