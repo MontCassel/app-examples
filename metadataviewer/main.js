@@ -14,11 +14,22 @@ miro.onReady(function() {
 });
 
 async function checkShapeMetadata() {
+  const appId = await miro.getClientId();
   // Get selected widgets
   let widgets = await miro.board.selection.get()
 
   // Get first widget from selected widgets
-  let text = widgets[0].text
+  let SelectedWidget = widgets[0]
 
-  alert(text)
+  SelectedWidget: {
+  metadata: {
+    [appId]; {
+      role
+    }
+  }
+  }
+
+  // Get widget metadata name 
+  Alert (SelectedWidget.metadata[appId].role)
+
 }
