@@ -18,9 +18,11 @@ async function checkShapeMetadata() {
     // Get selected widgets
     let widgets = await miro.board.selection.get()
 
+    widgets[0].metadata[appId].seed = "definition"
+
     // Get first widget from selected widgets
     let text = widgets[0].title
-    let metatext = widgets[0].metadata[appId]
+    let metatext = widgets[0].metadata[appId].seed
   
     alert(text)
     alert(metatext)
