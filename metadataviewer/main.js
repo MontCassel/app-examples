@@ -17,14 +17,4 @@ async function checkShapeMetadata() {
 
   Alert ("test");
 
-  const appId = await miro.getClientId();
-  // Get selected widgets
-  let widgets = await miro.board.selection.get()
-
-  // Get first widget from selected widgets
-  let SelectedWidget = widgets[0]
-
-  // Get widget metadata name 
-  Alert (SelectedWidget.title)
-
 }
