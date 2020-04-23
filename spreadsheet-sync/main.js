@@ -79,10 +79,6 @@ async function syncWithSheet() {
           }
         }
 
-
-
-
-
       });
       miro.board.widgets.create({
         type: "shape",
