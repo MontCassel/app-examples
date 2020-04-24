@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <script type="text/javascript" src="https://miro.com/app/static/sdk.1.1.js"></script>
+</head>
+
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    #container {
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        padding-top: 32px;
+        box-sizing: border-box;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        padding-left: 32px;
+        margin-bottom: 32px;
+    }
+
+    .draggable-item {
+        margin-left: 32px;
+        margin-bottom: 32px;
+        width: 112px;
+        height: 112px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 18px;
+        font-family: sans-serif;
+    }
+
+    .draggable-item.red {
+        background-color: #f24726;
+    }
+
+    .draggable-item.green {
+        background-color: #0ca788;
+    }
+
+    .image-box img {
+        max-width: 112px;
+        max-height: 112px;
+        cursor: pointer;
+    }
+
+</style>
+<body>
+<div id="container">
+</div>
+<script>
+
+	const images = [
+		{src: 'img/SLIDE_1.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_2.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_3.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_4.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_5.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_6.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_7.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_8.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_9.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_10.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_11.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_12.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_13.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_14.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_15.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_16.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_17.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_18.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_19.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_20.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_21.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_22.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_23.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_24.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_25.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_26.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_27.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_28.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_29.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_30.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_31.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_32.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_33.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_34.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_35.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_36.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_37.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_38.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_39.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_40.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_41.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_42.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_43.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_44.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_45.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_46.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_47.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_48.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_49.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_50.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_51.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_52.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_53.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_54.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_55.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_56.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_57.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_58.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_59.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_60.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_61.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_62.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_63.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_64.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_65.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_66.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_67.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_68.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_69.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_70.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_71.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_72.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_73.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_74.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_75.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_76.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_77.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_78.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_79.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_80.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_81.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_82.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_83.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_84.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_85.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_86.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_87.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_88.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_89.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_90.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_91.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_92.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_93.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_94.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_95.SVG', width: 267.02, height: 218.31},
+		{src: 'img/SLIDE_96.SVG', width: 267.02, height: 218.31},	
+	]
+
+	function getImage(img) {
+		return `<div class="draggable-item image-box">
+		        <img src="${img.src}" data-image-url="https://montcassel.github.io/app-examples/drag-and-drop/${img.src}">
+		        </div>`
+	}
+
+	function addShapes(container) {
+		container.innerHTML += '<div class="shape draggable-item green" data-color="0ca788">I am shape</div>' +
+			'<div class="shape draggable-item red" data-color="f24726">Me too</div>'
+	}
+
+	function addImages(container) {
+		container.innerHTML += images.map(i => getImage(i)).join('')
+	}
+
+	function createImage(canvasX, canvasY, url) {
+		console.log(url)
+		return miro.board.widgets.create({
+			type: 'image',
+			url: url,
+			x: canvasX,
+			y: canvasY,
+			//scale: 10
+		})
+	}
+
+	function createShape(canvasX, canvasY, color, text) {
+		return miro.board.widgets.create({
+			type: 'shape',
+			text: text,
+			x: canvasX,
+			y: canvasY,
+			style: {
+				textColor: '#fff',
+				backgroundColor: '#' + color,
+				borderColor: 'transparent'
+			}
+		})
+	}
+
+	function bootstrap() {
+		const container = document.getElementById('container')
+		addShapes(container)
+		addImages(container)
+
+        let currentImageUrl
+		const imageOptions = {
+			draggableItemSelector: 'img',
+			onClick: async (targetElement) => {
+				const url = targetElement.getAttribute('data-image-url')
+				const widget = (await createImage(0, 0, url))[0]
+				miro.board.viewport.zoomToObject(widget)
+
+			},
+			getDraggableItemPreview: (targetElement) => { //drag-started
+				currentImageUrl = targetElement.getAttribute('data-image-url')
+				return {
+					
+					width: 100,
+					height: 100,
+					url: currentImageUrl
+
+				}
+			},
+			onDrop: (canvasX, canvasY) => {
+				
+				console.log('onDrop 1')
+				createImage(canvasX, canvasY, currentImageUrl)
+			}
+		}
+		miro.board.ui.initDraggableItemsContainer(container, imageOptions)
+
+		let currentShapeColor
+		let currentShapeText
+		const shapeOptions = {
+			draggableItemSelector: '.shape',
+			onClick: async (targetElement) => {
+				const color = targetElement.getAttribute('data-color')
+				const text = targetElement.innerText
+				const widget = (await createShape(0, 0, color, text))[0]
+				miro.board.viewport.zoomToObject(widget)
+
+			},
+			getDraggableItemPreview: (targetElement) => {
+				currentShapeColor = targetElement.getAttribute('data-color')
+				currentShapeText = targetElement.innerText
+				return {
+					url: `data:image/svg+xml,%3Csvg width='140' height='140' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Crect stroke='null' x='0' y='0' fill='%23${currentShapeColor}' height='140' width='140'/%3E%3C/g%3E%3C/svg%3E`
+				}
+			},
+			onDrop: (canvasX, canvasY) => {
+				console.log('onDrop 2')
+				createShape(canvasX, canvasY, currentShapeColor, currentShapeText)
+			}
+		}
+		miro.board.ui.initDraggableItemsContainer(container, shapeOptions)
+	}
+
+	miro.onReady(bootstrap)
+</script>
+</body>
+</html>
