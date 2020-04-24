@@ -4,7 +4,7 @@ function run() {
 	miro.initialize({
 		extensionPoints: {
 			bottomBar: {
-				title: 'DArchitecture icons',
+				title: 'Architecture Icons',
 				svgIcon: icon24,
 				onClick: () => {
 					miro.board.ui.openLibrary('content.html', {title: 'Dropper'})
