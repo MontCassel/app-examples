@@ -7,7 +7,7 @@ function run() {
 				title: 'Architecture Dictionary',
 				svgIcon: icon24,
 				onClick: () => {
-					miro.board.ui.openLibrary('content.html', {title: 'Dropper'})
+					miro.board.ui.openLibrary('content.html', {title: 'Architecture Dictionary'})
 				}
 			},
 			getWidgetMenuItems: (widgets) => {
