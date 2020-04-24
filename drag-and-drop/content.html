@@ -181,12 +181,13 @@
 	function createImage(canvasX, canvasY, url) {
 		console.log(url)
 		return miro.board.widgets.create({
+			alert("Hello! I am an alert box!!");
 			type: 'image',
 			url: url,
 			x: canvasX,
 			y: canvasY,
-			width: 200,
-			height: 200,
+			width: 400,
+			height: 400,
 		})
 	}
 
@@ -229,7 +230,7 @@
 				}
 			},
 			onDrop: (canvasX, canvasY) => {
-				alert("Hello! I am an alert box!!");
+				
 				console.log('onDrop 1')
 				createImage(canvasX, canvasY, currentImageUrl)
 			}
