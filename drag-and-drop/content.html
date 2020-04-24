@@ -185,6 +185,8 @@
 			url: url,
 			x: canvasX,
 			y: canvasY,
+			width: 200,
+			height: 200,
 		})
 	}
 
@@ -219,12 +221,15 @@
 			getDraggableItemPreview: (targetElement) => { //drag-started
 				currentImageUrl = targetElement.getAttribute('data-image-url')
 				return {
+					
 					width: 100,
 					height: 100,
 					url: currentImageUrl
+
 				}
 			},
 			onDrop: (canvasX, canvasY) => {
+				alert("Hello! I am an alert box!!");
 				console.log('onDrop 1')
 				createImage(canvasX, canvasY, currentImageUrl)
 			}
