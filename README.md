@@ -1,4 +1,4 @@
-# Miro Apps Examples
+# Miro Apps Examples 0
 
 In this repository, you can find [types for Miro SDK](miro.d.ts) and several simple examples.
 
